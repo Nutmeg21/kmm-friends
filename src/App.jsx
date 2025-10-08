@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import Papa from "papaparse";
+import MarkerClusterGroup from "react-leaflet-cluster;"
 
 // Fix Leaflet default icon paths (prevents broken marker icons with many bundlers)
 delete L.Icon.Default.prototype._getIconUrl;
@@ -111,7 +112,8 @@ function App() {
       {coords && <FlyToLocation coords={coords} zoom={17} />}
 
       {/* Markers from CSV */}
-          {students.map((loc) => (
+        {students.map((loc) => (
+          <MarkerClusterGroup>
             <Marker key={loc.id} position={[loc.lat, loc.lon]}>
               <Popup>
                 <strong>{loc.name}</strong>
@@ -125,6 +127,7 @@ function App() {
                 </div>
               </Popup>
             </Marker>
+          </MarkerClusterGroup>  
           ))}
     </MapContainer>
   );
