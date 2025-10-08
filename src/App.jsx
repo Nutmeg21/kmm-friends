@@ -41,7 +41,7 @@ function App() {
 
   // load location markers from KMM_Masterfile.csv
   useEffect(() => {
-    fetch("./KMM_Masterfile.csv")
+    fetch(process.env.PUBLIC_URL + "/KMM_Masterfile.csv")
       .then((r) => r.text())
       .then((txt) => {
         Papa.parse(txt, {
