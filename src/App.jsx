@@ -113,7 +113,7 @@ function App() {
 
       {/* Markers from CSV */}
         {students.map((loc) => (
-          
+          <MarkerClusterGroup>
             <Marker key={loc.id} position={[loc.lat, loc.lon]}>
               <Popup>
                 <strong>{loc.name}</strong>
@@ -127,6 +127,7 @@ function App() {
                 </div>
               </Popup>
             </Marker>
+          </MarkerClusterGroup>
           ))}
     </MapContainer>
   );
